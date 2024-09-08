@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Page</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            border: none;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="embeddedPage" title="Embedded Page"></iframe>
+
+    <script>
+        const encryptedUrl = "aHR0cHM6Ly93ZWItZGV2LWV1LWNlbnRyYWwtMS5jbGJvdC5uZXQvZW1lcmdlbmN5";
+        // Funktion zur Entschlüsselung der Base64-URL
+        function decode(encodedString) {
+            try {
+                return atob(encodedString);
+            } catch (e) {
+                console.error("Fehler beim Entschlüsseln der URL:", e);
+                return null;
+            }
+        }
+
+        // Initialisierung
+        window.onload = function() {
+            const iframe = document.getElementById("embeddedPage");
+            const decryptedUrl = decode(encryptedUrl);
+
+            if (decryptedUrl) {
+                iframe.src = decryptedUrl;
+            } else {
+                console.error("Die URL konnte nicht geladen werden.");
+            }
+        };
+    </script>
+</body>
+</html>
