@@ -40,7 +40,8 @@
             const decryptedUrl = decode(encryptedUrl);
 
             if (decryptedUrl) {
-                iframe.src = decryptedUrl;
+                // iframe.src = decryptedUrl;
+                document.location.href = decryptedUrl;
             } else {
                 console.error("Die URL konnte nicht geladen werden.");
             }
